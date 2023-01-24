@@ -4,10 +4,8 @@ const boredApiService = require('../boredapiservice');
 
 router.get('/', function(req, res, next) {
 	const getTransformedActivity = async () => {
-		const response = await boredApiService.getActivity();
-		const activityJson = response.data;
-		const accessibility = activityJson.accessibility;
-		const price = activityJson.price;
+		const { data: activityJson } = await boredApiService.getActivity();
+		const { accessibility, price } = activityJson;
 
 		// Override old values with new ones
 		const priceText = price === 0 ? "Free" : price <= 0.5 ? "Low" : "High"; // Assuming price is a number between 0 and 1
