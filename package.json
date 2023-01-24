@@ -1,15 +1,15 @@
 {
   "name": "adrastea",
   "version": "1.0.0",
-  "description": "",
+  "description": "An assignment for a job application",
   "main": "index.js",
   "scripts": {
     "build": "babel -d ./dist ./src -s",
     "start": "node ./src/app.js",
     "start:dev": "nodemon --exec babel-node ./src/app.js --inspect"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Silver Taza",
+  "license": "MIT",
   "dependencies": {
     "@babel/cli": "^7.20.7",
     "@babel/core": "^7.20.12",
