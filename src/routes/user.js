@@ -1,10 +1,9 @@
 const express = require('express');
 const router = express.Router();
-import { PrismaClient } from '@prisma/client'
-const prisma = new PrismaClient()
+const userService = require('../services/userservice');
 
 router.get('/', async (req, res) => {
-	const users = await prisma.user.findMany();
+	const users = await userService.getUsers();
 	res.json({
 		success: true,
 		users,
@@ -22,21 +21,13 @@ router.post('/', async (req, res) => {
 		return;
 	}
 	try {
-		const user = await prisma.user.create({
-			data: {
-				name,
-				accessibility,
-				price,
-			},
-		});
-		await prisma.$disconnect();
+		// Use userService to create user
+		const user = await userService.createUser(name, accessibility, price);
 		res.json({
 			success: true,
 			user
 		});
 	} catch(e) {
-		console.error(e);
-		await prisma.$disconnect();
 		res.json({
 			success: false,
 			errors: [e]

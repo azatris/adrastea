@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const boredApiService = require('../boredapiservice');
+const boredApiService = require('../services/boredapiservice');
 import { PrismaClient } from '@prisma/client'
 const prisma = new PrismaClient()
 
@@ -27,10 +27,8 @@ router.get('/', function(req, res, next) {
 		const { accessibility, price } = activityJson;
 
 		// Override old values with new ones
-		const priceType = price === 0 ? "Free" : price <= 0.5 ? "Low" : "High"; // Assuming price is a number between 0 and 1
-		const accessibilityType = accessibility <= 0.25 ? "High" : accessibility <= 0.75 ? "Medium" : "Low"; // Assuming accessibility is a number between 0 and 1
-		activityJson.accessibility = accessibilityType;
-		activityJson.price = priceType;
+		activityJson.accessibility = accessibility <= 0.25 ? "High" : accessibility <= 0.75 ? "Medium" : "Low"; // Assuming accessibility is a number between 0 and 1
+		activityJson.price = price === 0 ? "Free" : price <= 0.5 ? "Low" : "High"; // Assuming price is a number between 0 and 1
 
 		return activityJson;
 	}
