@@ -20,6 +20,10 @@ router.get('/', function(req, res, next) {
 			const activity = await boredApiService.getActivity();
 			activityJson = activity.data;
 		}
+		if (activityJson.error) {
+			console.log("Error received: ", activityJson.error);
+			return activityJson;
+		}
 		const { accessibility, price } = activityJson;
 
 		// Override old values with new ones
