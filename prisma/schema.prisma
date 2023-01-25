@@ -1,0 +1,18 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// Could make a separate table for accessibility and price enums for a cleaner schema, but avoid overengineering
+// For simplicity, none of the values are optional (until we know it's necessary to expand that capability)
+model User {
+  id    Int     @id @default(autoincrement())
+  created DateTime @default(now())
+  name  String
+  accessibility String
+  price String
+}
