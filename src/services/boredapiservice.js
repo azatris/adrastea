@@ -21,6 +21,9 @@ module.exports = {
 		let url = ACTIVITY_URL + `?`;
 
 		function addAccessibilityConstraintsToUrl() {
+			if (countParams > 0) {
+				url += `&`;
+			}
 			let minaccessibility = 0;
 			let maxaccessibility = 1;
 			const {High, Medium, Low} = constants.ACCESSIBILITY;
@@ -35,11 +38,11 @@ module.exports = {
 				maxaccessibility = Low.max;
 			}
 			url += `${KEY_MIN_ACCESSIBILITY}=${minaccessibility}&${KEY_MAX_ACCESSIBILITY}=${maxaccessibility}`;
+			countParams++;
 		}
 
 		if (accessibilityLevel) {
 			addAccessibilityConstraintsToUrl();
-			countParams++;
 		}
 
 		function addPriceLevelConstraintsToUrl() {
@@ -60,6 +63,7 @@ module.exports = {
 				maxprice = High.max;
 			}
 			url += `${KEY_MIN_PRICE}=${minprice}&${KEY_MAX_PRICE}=${maxprice}`;
+			countParams++;
 		}
 
 		if (priceLevel) {
