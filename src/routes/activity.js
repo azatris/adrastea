@@ -4,7 +4,9 @@ import activityService from '../services/activityservice';
 const router = express.Router();
 
 router.get('/', function(req, res, next) {
-	activityService.getTransformedActivity().then(activity => { res.send(activity); });
+	activityService.getTransformedActivity()
+		.then(activity => { res.send(activity); })
+		.catch(e => { next(e) });
 });
 
 module.exports = router;
