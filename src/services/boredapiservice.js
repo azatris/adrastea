@@ -36,6 +36,9 @@ module.exports = {
 			} else if (accessibilityLevel === Low.name) {
 				minaccessibility = Low.min + EPSILON;
 				maxaccessibility = Low.max;
+			} else if (!!accessibilityLevel) {
+				// We have an accessibility level, but it's not one of the supported ones
+				throw new Error(`Unsupported accessibility level: ${accessibilityLevel}`);
 			}
 			url += `${KEY_MIN_ACCESSIBILITY}=${minaccessibility}&${KEY_MAX_ACCESSIBILITY}=${maxaccessibility}`;
 			countParams++;
@@ -61,6 +64,9 @@ module.exports = {
 			} else if (priceLevel === High.name) {
 				minprice = High.min + EPSILON;
 				maxprice = High.max;
+			} else if (!!priceLevel) {
+				// We have a price level, but it's not one of the supported ones
+				throw new Error(`Unsupported price level: ${priceLevel}`);
 			}
 			url += `${KEY_MIN_PRICE}=${minprice}&${KEY_MAX_PRICE}=${maxprice}`;
 			countParams++;
