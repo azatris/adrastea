@@ -16,7 +16,7 @@ router.get('/', async (req, res) => {
 router.post('/', async (req, res) => {
 	const { name, accessibility, price } = req.body;
 	// If unsupported accessibility or price type is used, return error
-	if (!constants.ACCESSIBILITY.keys().includes(accessibility) || !constants.PRICE.keys().includes(price)) {
+	if (!Object.keys(constants.ACCESSIBILITY).includes(accessibility) || !Object.keys(constants.PRICE).includes(price)) {
 		res.json({
 			success: false,
 			errors: ["Unsupported accessibility or price type"]
