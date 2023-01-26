@@ -15,6 +15,15 @@ app.use(bodyParser.json());
 app.use('/', indexRouter);
 app.use('/activity', activityRouter);
 app.use('/user', userRouter);
+app.use('/500', error500Router);
+
+app.use((error, req, res, next) => {
+  console.log("Error Handling Middleware called")
+  console.log('Path: ', req.path)
+  console.error('Error: ', error)
+
+  res.redirect('/500')
+})
 
 app.listen(port, () => {
   console.log(`App listening on port ${port}`);
