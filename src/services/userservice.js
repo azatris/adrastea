@@ -1,10 +1,10 @@
-import {PrismaClient} from '@prisma/client'
+import { PrismaClient } from "@prisma/client";
 
-const prisma = new PrismaClient()
+const prisma = new PrismaClient();
 
 const getUsers = async () => {
   return prisma.user.findMany();
-}
+};
 
 const createUser = async (name, accessibility, price) => {
   try {
@@ -14,16 +14,16 @@ const createUser = async (name, accessibility, price) => {
         accessibility,
         price,
       },
-    })
+    });
   } catch (e) {
-    console.error(e)
-    throw e
+    console.error(e);
+    throw e;
   } finally {
-    await prisma.$disconnect()
+    await prisma.$disconnect();
   }
-}
+};
 
 module.exports = {
-    getUsers,
-    createUser
-}
+  getUsers,
+  createUser,
+};
