@@ -26,7 +26,6 @@ router.post("/", async (req, res) => {
     return;
   }
   try {
-    // Use userService to create user
     const user = await userService.createUser(name, accessibility, price);
     res.json({
       success: true,

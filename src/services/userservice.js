@@ -2,6 +2,9 @@ import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
+const getLastUser = async () =>
+  prisma.user.findFirst({ orderBy: { id: "desc" } });
+
 const getUsers = async () => prisma.user.findMany();
 
 const createUser = async (name, accessibility, price) => {
@@ -24,4 +27,5 @@ const createUser = async (name, accessibility, price) => {
 module.exports = {
   getUsers,
   createUser,
+  getLastUser,
 };

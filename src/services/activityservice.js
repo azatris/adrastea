@@ -1,14 +1,10 @@
-import { PrismaClient } from "@prisma/client";
 import boredApiService from "./boredapiservice";
 import constants from "../constants";
-
-const prisma = new PrismaClient();
+import userService from "./userservice";
 
 const getTransformedActivity = async () => {
   // If a user is created, let's use the last one created to get their accessibility and price to query the API
-  // const { data: lastUser } = await prisma.user.findMany(({ orderBy: { id: 'desc' }, take: 1 }));
-  const lastUser = await prisma.user.findFirst({ orderBy: { id: "desc" } });
-  await prisma.$disconnect();
+  const lastUser = await userService.getLastUser();
 
   let activityJson;
   if (lastUser) {
