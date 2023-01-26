@@ -1,12 +1,14 @@
 import express from "express";
 import bodyParser from 'body-parser';
+import indexRouter from './routes/index';
+import activityRouter from './routes/activity';
+import userRouter from './routes/user';
+import error500Router from './routes/error500Router';
+
 
 const app = express();
 const port = process.env.PORT ?? 3000;
 
-const indexRouter = require('./routes/index');
-const activityRouter = require('./routes/activity');
-const userRouter = require('./routes/user');
 const logger = require('morgan');
 
 app.use(logger('dev'));
