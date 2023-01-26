@@ -1,6 +1,7 @@
 import axios from "axios";
 import constants from "../constants";
 import { InvalidAccessibilityError, InvalidPriceError } from "../errors";
+
 const BASE_URL = "http://www.boredapi.com/api";
 const ACTIVITY_URL = `${BASE_URL}/activity`;
 const KEY_MIN_ACCESSIBILITY = "minaccessibility";
@@ -19,11 +20,11 @@ module.exports = {
     }
 
     let countParams = 0;
-    let url = ACTIVITY_URL + `?`;
+    let url = `${ACTIVITY_URL}?`;
 
     function addAccessibilityConstraintsToUrl() {
       if (countParams > 0) {
-        url += `&`;
+        url += "&";
       }
       let minaccessibility = 0;
       let maxaccessibility = 1;
@@ -37,7 +38,7 @@ module.exports = {
       } else if (accessibilityLevel === Low.name) {
         minaccessibility = Low.min + EPSILON;
         maxaccessibility = Low.max;
-      } else if (!!accessibilityLevel) {
+      } else if (accessibilityLevel) {
         // We have an accessibility level, but it's not one of the supported ones
         throw new InvalidAccessibilityError(
           `Unsupported accessibility level: ${accessibilityLevel}`
@@ -53,7 +54,7 @@ module.exports = {
 
     function addPriceLevelConstraintsToUrl() {
       if (countParams > 0) {
-        url += `&`;
+        url += "&";
       }
       let minprice = 0;
       let maxprice = 1;
@@ -67,7 +68,7 @@ module.exports = {
       } else if (priceLevel === High.name) {
         minprice = High.min + EPSILON;
         maxprice = High.max;
-      } else if (!!priceLevel) {
+      } else if (priceLevel) {
         // We have a price level, but it's not one of the supported ones
         throw new InvalidPriceError(`Unsupported price level: ${priceLevel}`);
       }
@@ -80,7 +81,7 @@ module.exports = {
     }
     return axios({
       method: "GET",
-      url: url,
+      url,
     });
   },
 };

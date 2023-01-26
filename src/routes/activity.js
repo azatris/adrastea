@@ -3,7 +3,7 @@ import activityService from "../services/activityservice";
 
 const router = express.Router();
 
-router.get("/", function (req, res, next) {
+router.get("/", (req, res, next) => {
   activityService
     .getTransformedActivity()
     .then((activity) => {
