@@ -1,5 +1,6 @@
 import axios from 'axios';
 import constants from "../constants";
+import {InvalidAccessibilityError, InvalidPriceError} from "../errors";
 const BASE_URL = 'http://www.boredapi.com/api';
 const ACTIVITY_URL = `${BASE_URL}/activity`;
 const KEY_MIN_ACCESSIBILITY = 'minaccessibility';
@@ -38,7 +39,7 @@ module.exports = {
 				maxaccessibility = Low.max;
 			} else if (!!accessibilityLevel) {
 				// We have an accessibility level, but it's not one of the supported ones
-				throw new Error(`Unsupported accessibility level: ${accessibilityLevel}`);
+				throw new InvalidAccessibilityError(`Unsupported accessibility level: ${accessibilityLevel}`);
 			}
 			url += `${KEY_MIN_ACCESSIBILITY}=${minaccessibility}&${KEY_MAX_ACCESSIBILITY}=${maxaccessibility}`;
 			countParams++;
@@ -66,7 +67,7 @@ module.exports = {
 				maxprice = High.max;
 			} else if (!!priceLevel) {
 				// We have a price level, but it's not one of the supported ones
-				throw new Error(`Unsupported price level: ${priceLevel}`);
+				throw new InvalidPriceError(`Unsupported price level: ${priceLevel}`);
 			}
 			url += `${KEY_MIN_PRICE}=${minprice}&${KEY_MAX_PRICE}=${maxprice}`;
 			countParams++;
