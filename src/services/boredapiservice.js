@@ -1,51 +1,69 @@
 import axios from 'axios';
+import constants from "../constants";
 const BASE_URL = 'http://www.boredapi.com/api';
+const ACTIVITY_URL = `${BASE_URL}/activity`;
+const KEY_MIN_ACCESSIBILITY = 'minaccessibility';
+const KEY_MAX_ACCESSIBILITY = 'maxaccessibility';
+const KEY_MIN_PRICE = 'minprice';
+const KEY_MAX_PRICE = 'maxprice';
+const EPSILON = 0.00000000000000001; // The API has inclusive ranges, so we need to add a small number to the min params
 
 module.exports = {
 	getActivity: (accessibilityLevel, priceLevel) => {
 		if (!accessibilityLevel && !priceLevel) {
 			return axios({
 				method: 'GET',
-				url: `${BASE_URL}/activity`
+				url: ACTIVITY_URL
 			});
 		}
 
-		let epsilon = 0.00000000000000001; // The API has inclusive ranges, so we need to add a small number to the min params
 		let countParams = 0;
-		let url = `${BASE_URL}/activity?`;
-		if (accessibilityLevel) {
+		let url = ACTIVITY_URL + `?`;
+
+		function addAccessibilityConstraintsToUrl() {
 			let minaccessibility = 0;
 			let maxaccessibility = 1;
-			if (accessibilityLevel === 'High') {
-				minaccessibility = 0;
-				maxaccessibility = 0.25;
-			} else if (accessibilityLevel === 'Medium') {
-				minaccessibility = 0.25 + epsilon;
-				maxaccessibility = 0.75;
-			} else if (accessibilityLevel === 'Low') {
-				minaccessibility = 0.75 + epsilon;
-				maxaccessibility = 1;
+			const {High, Medium, Low} = constants.ACCESSIBILITY;
+			if (accessibilityLevel === High.name) {
+				minaccessibility = High.min;
+				maxaccessibility = High.max;
+			} else if (accessibilityLevel === Medium.name) {
+				minaccessibility = Medium.min + EPSILON;
+				maxaccessibility = Medium.max;
+			} else if (accessibilityLevel === Low.name) {
+				minaccessibility = Low.min + EPSILON;
+				maxaccessibility = Low.max;
 			}
-			url += `minaccessibility=${minaccessibility}&maxaccessibility=${maxaccessibility}`;
+			url += `${KEY_MIN_ACCESSIBILITY}=${minaccessibility}&${KEY_MAX_ACCESSIBILITY}=${maxaccessibility}`;
+		}
+
+		if (accessibilityLevel) {
+			addAccessibilityConstraintsToUrl();
 			countParams++;
 		}
-		if (priceLevel) {
+
+		function addPriceLevelConstraintsToUrl() {
 			if (countParams > 0) {
 				url += `&`;
 			}
 			let minprice = 0;
 			let maxprice = 1;
-			if (priceLevel === 'Free') {
-				minprice = 0;
-				maxprice = 0;
-			} else if (priceLevel === 'Low') {
-				minprice = epsilon;
-				maxprice = 0.5;
-			} else if (priceLevel === 'High') {
-				minprice = 0.5 + epsilon;
-				maxprice = 1;
+			const {Free, Low, High} = constants.PRICE;
+			if (priceLevel === Free.name) {
+				minprice = Free.min;
+				maxprice = Free.max;
+			} else if (priceLevel === Low.name) {
+				minprice = Low.min + EPSILON;
+				maxprice = Low.max;
+			} else if (priceLevel === High.name) {
+				minprice = High.min + EPSILON;
+				maxprice = High.max;
 			}
-			url += `minprice=${minprice}&maxprice=${maxprice}`;
+			url += `${KEY_MIN_PRICE}=${minprice}&${KEY_MAX_PRICE}=${maxprice}`;
+		}
+
+		if (priceLevel) {
+			addPriceLevelConstraintsToUrl();
 		}
 		return axios({
 			method: 'GET',

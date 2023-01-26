@@ -23,11 +23,19 @@ const getTransformedActivity = async () => {
 		console.log("Error received: ", activityJson.error);
 		return activityJson;
 	}
-	const { accessibility, price } = activityJson;
 
-	// Override old values with new ones
-	activityJson.accessibility = accessibility <= 0.25 ? "High" : accessibility <= 0.75 ? "Medium" : "Low"; // Assuming accessibility is a number between 0 and 1
-	activityJson.price = price === 0 ? "Free" : price <= 0.5 ? "Low" : "High"; // Assuming price is a number between 0 and 1
+	// Transform accessibility and price to human-readable values
+	const { ACCESSIBILITY, PRICE } = constants;
+	activityJson.accessibility = activityJson.accessibility <= ACCESSIBILITY.High.max
+		? ACCESSIBILITY.High.name
+		: activityJson <= ACCESSIBILITY.Medium.max
+			? ACCESSIBILITY.Medium.name
+			: ACCESSIBILITY.Low.name;
+	activityJson.price = activityJson.price === PRICE.Free.max
+		? PRICE.Free.name
+		: activityJson.price <= PRICE.Low.max
+			? PRICE.Low.name
+			: PRICE.High.name;
 
 	return activityJson;
 }
