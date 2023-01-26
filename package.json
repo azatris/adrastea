@@ -6,7 +6,10 @@
   "scripts": {
     "build": "babel -d ./dist ./src -s",
     "start": "node ./src/app.js",
-    "start:dev": "nodemon --exec babel-node ./src/app.js --inspect"
+    "start:dev": "nodemon --exec babel-node ./src/app.js --inspect",
+    "lint": "eslint --ext js,jsx src",
+    "lint:fix": "eslint --ext js,jsx src --fix",
+    "format": "prettier-eslint --write \"src/**/*.{js,jsx}\""
   },
   "author": "Silver Taza",
   "license": "MIT",
@@ -25,7 +28,15 @@
     "@babel/polyfill": "^7.12.1",
     "@babel/preset-env": "^7.20.2",
     "@babel/runtime": "^7.20.13",
+    "eslint": "^8.32.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-jsx-a11y": "^6.7.1",
+    "eslint-plugin-react": "^7.32.1",
+    "eslint-plugin-react-hooks": "^4.6.0",
     "nodemon": "^2.0.20",
+    "prettier-eslint": "^15.0.1",
+    "prettier-eslint-cli": "^7.1.0",
     "prisma": "^4.9.0"
   }
 }
