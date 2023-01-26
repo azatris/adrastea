@@ -1,5 +1,7 @@
 import { PrismaClient } from '@prisma/client'
 import boredApiService from "./boredapiservice";
+import constants from '../constants';
+
 const prisma = new PrismaClient()
 
 const getTransformedActivity = async () => {

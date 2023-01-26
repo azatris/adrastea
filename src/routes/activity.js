@@ -1,6 +1,7 @@
-const express = require('express');
+import express from 'express';
+import activityService from '../services/activityservice';
+
 const router = express.Router();
-const activityService = require('../services/activityservice');
 
 router.get('/', function(req, res, next) {
 	activityService.getTransformedActivity().then(activity => { res.send(activity); });

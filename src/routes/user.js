@@ -1,6 +1,9 @@
-const express = require('express');
+import express from 'express';
+import userService from '../services/userservice';
+import constants from '../constants';
+
 const router = express.Router();
-const userService = require('../services/userservice');
+
 
 router.get('/', async (req, res) => {
 	const users = await userService.getUsers();
