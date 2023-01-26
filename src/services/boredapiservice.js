@@ -45,7 +45,7 @@ module.exports = {
         );
       }
       url += `${KEY_MIN_ACCESSIBILITY}=${minaccessibility}&${KEY_MAX_ACCESSIBILITY}=${maxaccessibility}`;
-      countParams++;
+      countParams += 1;
     }
 
     if (accessibilityLevel) {
@@ -73,7 +73,7 @@ module.exports = {
         throw new InvalidPriceError(`Unsupported price level: ${priceLevel}`);
       }
       url += `${KEY_MIN_PRICE}=${minprice}&${KEY_MAX_PRICE}=${maxprice}`;
-      countParams++;
+      countParams += 1;
     }
 
     if (priceLevel) {

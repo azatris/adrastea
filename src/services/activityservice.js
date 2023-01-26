@@ -29,18 +29,19 @@ const getTransformedActivity = async () => {
 
   // Transform accessibility and price to human-readable values
   const { ACCESSIBILITY, PRICE } = constants;
-  activityJson.accessibility =
-    activityJson.accessibility <= ACCESSIBILITY.High.max
-      ? ACCESSIBILITY.High.name
-      : activityJson <= ACCESSIBILITY.Medium.max
-      ? ACCESSIBILITY.Medium.name
-      : ACCESSIBILITY.Low.name;
-  activityJson.price =
-    activityJson.price === PRICE.Free.max
-      ? PRICE.Free.name
-      : activityJson.price <= PRICE.Low.max
-      ? PRICE.Low.name
-      : PRICE.High.name;
+  if (activityJson.accessibility <= ACCESSIBILITY.High.max) {
+    activityJson.accessibility = ACCESSIBILITY.High.name;
+  } else if (activityJson <= ACCESSIBILITY.Medium.max) {
+    activityJson.accessibility = ACCESSIBILITY.Medium.name;
+  } else {
+    activityJson.accessibility = ACCESSIBILITY.Low.name;
+  }
+  if (activityJson.price === PRICE.Free.max) {
+    activityJson.price = PRICE.Free.name;
+  } else {
+    activityJson.price =
+      activityJson.price <= PRICE.Low.max ? PRICE.Low.name : PRICE.High.name;
+  }
 
   return activityJson;
 };
