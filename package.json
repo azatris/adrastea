@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "An assignment for a job application",
   "main": "index.js",
-  "type": "module",
   "scripts": {
     "build": "babel -d ./dist ./src -s",
     "start": "node ./src/app.js",
