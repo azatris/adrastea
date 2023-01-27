@@ -2,6 +2,7 @@ import './App.scss';
 import {CssBaseline, CssVarsProvider, Divider, Grid, Stack, Typography} from "@mui/joy";
 import DarkToggle from "./DarkToggle";
 import CreateProfileModalButton from "./CreateProfileModalButton";
+import ActivitySuggestion from "./ActivitySuggestion";
 
 function App() {
   return (
@@ -24,6 +25,11 @@ function App() {
                   </Grid>
               </Grid>
               <Divider />
+              <Stack sx={{ p: 2 }} spacing={2} >
+                  <ActivitySuggestion />
+                  <ActivitySuggestion />
+                  <ActivitySuggestion />
+              </Stack>
           </div>
       </CssVarsProvider>
   );
