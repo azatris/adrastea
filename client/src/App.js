@@ -1,6 +1,7 @@
 import './App.scss';
-import {Button, CssBaseline, CssVarsProvider, Divider, Grid, Stack, Typography} from "@mui/joy";
+import {CssBaseline, CssVarsProvider, Divider, Grid, Stack, Typography} from "@mui/joy";
 import DarkToggle from "./DarkToggle";
+import CreateProfileModalButton from "./CreateProfileModalButton";
 
 function App() {
   return (
@@ -17,13 +18,12 @@ function App() {
                   </Grid>
                   <Grid xs={6}>
                       <Stack direction="row" justifyContent="flex-end" spacing={2}>
-                          <Button variant="outlined">😀 Create Profile</Button>
+                          <CreateProfileModalButton />
                           <DarkToggle />
                       </Stack>
                   </Grid>
               </Grid>
               <Divider />
-
           </div>
       </CssVarsProvider>
   );
