@@ -7,12 +7,32 @@ import { Fireworks } from '@fireworks-js/react'
 import {useEffect, useRef} from "react";
 
 export default function UserProfile() {
+	const [isLoading, setIsLoading] = React.useState(true);
+	const [data, setData] = React.useState([]);
 
 	const fireworks = useRef(null);
 
+	function loadNewActivity() {
+		fetch('/user/last')
+			.then(response => response.json())
+			.then(json => {
+				setIsLoading(false);
+				setData(json.user);
+			})
+			.catch((error) => console.log(error));
+	}
+
 	useEffect(() => {
 		fireworks.current.stop();
+		loadNewActivity();
 	}, [])
+
+	React.useEffect(() => {
+		if (data.length !== 0) {
+			setIsLoading(false);
+		}
+		console.log(data);
+	}, [data]);
 
 	const onProfileClick = () => {
 		fireworks.current.launch(25);
@@ -37,7 +57,7 @@ export default function UserProfile() {
 					zIndex: -1,
 				}}
 			/>
-			<Card
+			{!isLoading && <Card
 				variant="outlined"
 				row
 				sx={{
@@ -49,14 +69,14 @@ export default function UserProfile() {
 			>
 				<AspectRatio ratio="1" sx={{ width: 90 }}>
 					<img
-						src="https://source.unsplash.com/random?profile"
+						src="https://source.unsplash.com/random?profile&w=84"
 						loading="lazy"
 						alt=""
 					/>
 				</AspectRatio>
 				<div>
 					<Typography level="h2" fontSize="lg" id="card-description" mb={0.5}>
-						Napoléon Bonaparte
+						{ data.name }
 					</Typography>
 					<Chip
 						variant="outlined"
@@ -64,7 +84,7 @@ export default function UserProfile() {
 						size="sm"
 						sx={{ pointerEvents: 'none' }}
 					>
-						Price: Low
+						Price: { data.price }
 					</Chip>
 					<Chip
 						variant="outlined"
@@ -72,10 +92,10 @@ export default function UserProfile() {
 						size="sm"
 						sx={{ pointerEvents: 'none' }}
 					>
-						Accessibility: High
+						Accessibility: { data.accessibility }
 					</Chip>
 				</div>
-			</Card>
+			</Card>}
 		</>
 	);
 }

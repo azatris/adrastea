@@ -4,6 +4,14 @@ import constants from "../constants";
 
 const router = express.Router();
 
+router.get("/last", async (req, res) => {
+  const user = await userService.getLastUser();
+  res.json({
+    success: true,
+    user,
+  });
+});
+
 router.get("/", async (req, res) => {
   const users = await userService.getUsers();
   res.json({

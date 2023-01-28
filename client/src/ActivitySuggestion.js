@@ -7,6 +7,7 @@ import Typography from '@mui/joy/Typography';
 import RefreshIcon from '@mui/icons-material/Refresh';
 import {Divider, Stack} from "@mui/joy";
 import CategoryIcon from '@mui/icons-material/Category';
+import OpenInNew from "@mui/icons-material/OpenInNew";
 
 export default function ActivitySuggestion() {
 	const [isLoading, setIsLoading] = React.useState(true);
@@ -90,7 +91,9 @@ export default function ActivitySuggestion() {
 						color="primary"
 						aria-label="Explore Bahamas Islands"
 						sx={{ ml: 'auto', fontWeight: 600 }}
-						onClick={() => window.open(data.link, '_blank')}
+						component="a"
+						href={data.link}
+						startDecorator={<OpenInNew />}
 					>
 						Explore
 					</Button>}
