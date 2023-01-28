@@ -34,6 +34,7 @@ export default function ActivitySuggestion() {
   }, [data]);
 
   return (
+    // noinspection react/jsx-no-useless-fragment
     <>
       {!isLoading && (
         <Card variant="outlined" sx={{ width: 640 }}>

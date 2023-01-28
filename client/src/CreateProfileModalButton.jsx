@@ -16,8 +16,9 @@ import Add from "@mui/icons-material/Add";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import AccessibilityIcon from "@mui/icons-material/Accessibility";
 import MoneyOffIcon from "@mui/icons-material/MoneyOff";
+import PropTypes from "prop-types";
 
-function CreateProfileModalButton(props) {
+function CreateProfileModalButton({ onProfileCreated }) {
   const [open, setOpen] = React.useState(false);
 
   function createNewProfile(event) {
@@ -35,7 +36,7 @@ function CreateProfileModalButton(props) {
         price: data.get("price"),
       }),
     })
-      .then(() => props.onProfileCreated())
+      .then(() => onProfileCreated())
       .finally(() => setOpen(false));
   }
 
@@ -142,5 +143,9 @@ function CreateProfileModalButton(props) {
     </>
   );
 }
+
+CreateProfileModalButton.propTypes = {
+  onProfileCreated: PropTypes.func.isRequired,
+};
 
 export default CreateProfileModalButton;

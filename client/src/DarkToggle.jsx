@@ -1,5 +1,6 @@
 import { useColorScheme } from "@mui/joy/styles";
 import Button from "@mui/joy/Button";
+import * as React from "react";
 
 function DarkToggle() {
   const { mode, setMode } = useColorScheme();
