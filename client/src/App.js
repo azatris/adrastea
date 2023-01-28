@@ -3,6 +3,8 @@ import {CssBaseline, CssVarsProvider, Divider, Grid, Stack, Typography} from "@m
 import DarkToggle from "./DarkToggle";
 import CreateProfileModalButton from "./CreateProfileModalButton";
 import ActivitySuggestion from "./ActivitySuggestion";
+import UserProfile from "./UserProfile";
+import * as React from "react";
 
 function App() {
   return (
@@ -24,10 +26,10 @@ function App() {
                       </Stack>
                   </Grid>
               </Grid>
+
               <Divider />
               <Stack sx={{ p: 2 }} spacing={2} >
-                  <ActivitySuggestion />
-                  <ActivitySuggestion />
+                  <UserProfile />
                   <ActivitySuggestion />
               </Stack>
           </div>
