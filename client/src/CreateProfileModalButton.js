@@ -40,7 +40,7 @@ function CreateProfileModalButton(props) {
   }
 
   return (
-    <React.Fragment>
+    <>
       <Button
         variant="outlined"
         color="neutral"
@@ -139,7 +139,7 @@ function CreateProfileModalButton(props) {
           </form>
         </ModalDialog>
       </Modal>
-    </React.Fragment>
+    </>
   );
 }
 

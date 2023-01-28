@@ -7,11 +7,11 @@ import {
   Stack,
   Typography,
 } from "@mui/joy";
+import * as React from "react";
 import DarkToggle from "./DarkToggle";
 import CreateProfileModalButton from "./CreateProfileModalButton";
 import ActivitySuggestion from "./ActivitySuggestion";
 import UserProfile from "./UserProfile";
-import * as React from "react";
 
 function App() {
   const onProfileCreated = () => {

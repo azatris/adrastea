@@ -64,7 +64,7 @@ export default function ActivitySuggestion() {
           >
             <RefreshIcon />
           </IconButton>
-          {/*Attempt to get a decent illustration by using the first 5 words of the activity title*/}
+          {/* Attempt to get a decent illustration by using the first 5 words of the activity title */}
           <AspectRatio minHeight="120px" maxHeight="200px" sx={{ my: 2 }}>
             <img
               src={`https://source.unsplash.com/random?${data.activity
