@@ -85,7 +85,7 @@ export default function ActivitySuggestion() {
 							</Typography>
 						</div>
 					</Stack>
-					{ data.link ?? <Button
+					{ data.link && <Button
 						variant="solid"
 						size="sm"
 						color="primary"
