@@ -12,7 +12,8 @@
             "files": ["*.js", "*.jsx"],
             "rules": {
                 "import/no-import-module-exports": ["off"], // Not an actual problem for us
-                "no-console": ["off"]
+                "no-console": ["off"],
+                "react/jsx-no-useless-fragment": [2, { "allowExpressions": true }]
             }
         },
         {
