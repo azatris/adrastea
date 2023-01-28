@@ -85,7 +85,7 @@ export default function UserProfile() {
               variant="outlined"
               color="primary"
               size="sm"
-              sx={{ pointerEvents: "none" }}
+              sx={{ pointerEvents: "none", m: 0.5 }}
             >
               Price: {!data.price ? "Any" : data.price}
             </Chip>
@@ -93,7 +93,7 @@ export default function UserProfile() {
               variant="outlined"
               color="primary"
               size="sm"
-              sx={{ pointerEvents: "none" }}
+              sx={{ pointerEvents: "none", m: 0.5 }}
             >
               Accessibility: {!data.accessibility ? "Any" : data.accessibility}
             </Chip>
