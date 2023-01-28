@@ -72,7 +72,7 @@ function CreateProfileModalButton(props) {
 						}}
 					>
 						<Stack spacing={2}>
-							<FormControl>
+							<FormControl required>
 								<FormLabel>Name</FormLabel>
 								<Input autoFocus required placeholder="Leonardo Da Vinci" id="name" name="name"/>
 							</FormControl>

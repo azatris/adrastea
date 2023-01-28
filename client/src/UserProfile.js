@@ -84,7 +84,7 @@ export default function UserProfile() {
 						size="sm"
 						sx={{ pointerEvents: 'none' }}
 					>
-						Price: { data.price }
+						Price: { !data.price ? 'Any' : data.price }
 					</Chip>
 					<Chip
 						variant="outlined"
@@ -92,7 +92,7 @@ export default function UserProfile() {
 						size="sm"
 						sx={{ pointerEvents: 'none' }}
 					>
-						Accessibility: { data.accessibility }
+						Accessibility: { !data.accessibility ? 'Any' : data.accessibility }
 					</Chip>
 				</div>
 			</Card>}
