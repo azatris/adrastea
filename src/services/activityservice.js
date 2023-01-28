@@ -14,6 +14,10 @@ const getTransformedActivity = async () => {
       priceLevel
     );
     activityJson = activity.data;
+    if (activityJson.error) { // If the API returns an error, let's just get a random activity
+      const activity = await boredApiService.getActivity();
+      activityJson = activity.data;
+    }
   } else {
     const activity = await boredApiService.getActivity();
     activityJson = activity.data;
