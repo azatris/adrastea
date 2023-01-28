@@ -1,6 +1,5 @@
 import * as React from 'react';
 import AspectRatio from '@mui/joy/AspectRatio';
-import Link from '@mui/joy/Link';
 import Card from '@mui/joy/Card';
 import Chip from '@mui/joy/Chip';
 import Typography from '@mui/joy/Typography';
@@ -8,6 +7,7 @@ import { Fireworks } from '@fireworks-js/react'
 import {useEffect, useRef} from "react";
 
 export default function UserProfile() {
+
 	const fireworks = useRef(null);
 
 	useEffect(() => {
