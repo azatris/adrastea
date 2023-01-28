@@ -28,7 +28,7 @@ export default function UserProfile() {
 	}, [])
 
 	React.useEffect(() => {
-		if (data.length !== 0) {
+		if (data && data.length !== 0) {
 			setIsLoading(false);
 		}
 		console.log(data);
@@ -57,7 +57,7 @@ export default function UserProfile() {
 					zIndex: -1,
 				}}
 			/>
-			{!isLoading && <Card
+			{!isLoading && data && <Card
 				variant="outlined"
 				row
 				sx={{
