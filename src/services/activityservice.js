@@ -9,13 +9,14 @@ const getTransformedActivity = async () => {
   let activityJson;
   if (lastUser) {
     const { accessibility: accessibilityLevel, price: priceLevel } = lastUser;
-    const activity = await boredApiService.getActivity(
+    let activity = await boredApiService.getActivity(
       accessibilityLevel,
       priceLevel
     );
     activityJson = activity.data;
-    if (activityJson.error) { // If the API returns an error, let's just get a random activity
-      const activity = await boredApiService.getActivity();
+    if (activityJson.error) {
+      // If the API returns an error, let's just get a random activity
+      activity = await boredApiService.getActivity();
       activityJson = activity.data;
     }
   } else {
