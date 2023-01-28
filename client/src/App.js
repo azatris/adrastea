@@ -7,6 +7,10 @@ import UserProfile from "./UserProfile";
 import * as React from "react";
 
 function App() {
+    const onProfileCreated = () => {
+        window.location.reload();
+    };
+
   return (
       <CssVarsProvider>
           <CssBaseline />
@@ -21,7 +25,7 @@ function App() {
                   </Grid>
                   <Grid xs={6}>
                       <Stack direction="row" justifyContent="flex-end" spacing={2}>
-                          <CreateProfileModalButton />
+                          <CreateProfileModalButton onProfileCreated={onProfileCreated} />
                           <DarkToggle />
                       </Stack>
                   </Grid>

@@ -6,8 +6,28 @@ import AccessibilityIcon from '@mui/icons-material/Accessibility';
 import MoneyOffIcon from '@mui/icons-material/MoneyOff';
 
 
-function CreateProfileModalButton() {
+function CreateProfileModalButton(props) {
 	const [open, setOpen] = React.useState(false);
+
+	function createNewProfile(event) {
+		event.preventDefault();
+		const data = new FormData(event.target);
+
+		fetch('/user', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({
+				name: data.get('name'),
+				accessibility: data.get('accessibility'),
+				price: data.get('price'),
+			})
+		})
+			.then(() => props.onProfileCreated())
+			.finally(() => setOpen(false))
+	}
+
 	return (
 		<React.Fragment>
 			<Button
@@ -48,18 +68,17 @@ function CreateProfileModalButton() {
 					</Typography>
 					<form
 						onSubmit={(event) => {
-							event.preventDefault();
-							setOpen(false);
+							createNewProfile(event);
 						}}
 					>
 						<Stack spacing={2}>
 							<FormControl>
 								<FormLabel>Name</FormLabel>
-								<Input autoFocus required placeholder="Leonardo Da Vinci"/>
+								<Input autoFocus required placeholder="Leonardo Da Vinci" id="name" name="name"/>
 							</FormControl>
 							<FormControl>
 								<FormLabel>Price</FormLabel>
-								<Select startDecorator={<AttachMoneyIcon />} placeholder="Select price…">
+								<Select startDecorator={<AttachMoneyIcon />} placeholder="Select price…" id="price" name="price">
 									<Option value="Free">
 										<ListItemDecorator>
 											<MoneyOffIcon />
@@ -81,7 +100,8 @@ function CreateProfileModalButton() {
 								</Select>
 							</FormControl>
 							<FormControl>
-								<Select startDecorator={<AccessibilityIcon />} placeholder="Select accessibility…">
+								<FormLabel>Accessibility</FormLabel>
+								<Select startDecorator={<AccessibilityIcon />} placeholder="Select accessibility…" id="accessibility" name="accessibility">
 									<Option value="Low">Low</Option>
 									<Option value="Medium">Medium</Option>
 									<Option value="High">High</Option>
