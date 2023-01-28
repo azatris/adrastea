@@ -31,7 +31,6 @@ export default function ActivitySuggestion() {
 		if (data.length !== 0) {
 			setIsLoading(false);
 		}
-		console.log(data);
 	}, [data]);
 
 	return (

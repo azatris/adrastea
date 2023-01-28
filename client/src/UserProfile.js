@@ -31,7 +31,6 @@ export default function UserProfile() {
 		if (data && data.length !== 0) {
 			setIsLoading(false);
 		}
-		console.log(data);
 	}, [data]);
 
 	const onProfileClick = () => {
