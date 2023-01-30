@@ -78,4 +78,8 @@ On increased complexity of the app, form validation should be added via a librar
 ### Package management
 Could use a build system such as Lerna or NX.dev for monorepo support to manage the client and server side better.
 
+### Testing
+Could use Jest for testing. This should be done once we have a better understanding of this app's user base and their requirements, so we can test these pathways thoroughly. 
+Until then this app is more of a prototype.
+
 
