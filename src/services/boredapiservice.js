@@ -1,5 +1,5 @@
 import axios from "axios";
-import constants from "../constants";
+import { constants } from "../constants";
 import { InvalidAccessibilityError, InvalidPriceError } from "../errors";
 
 const BASE_URL = "http://www.boredapi.com/api";

@@ -1,6 +1,6 @@
 import express from "express";
 import { getLastUser, getUsers, createUser } from "../services/userservice";
-import constants from "../constants";
+import { constants } from "../constants";
 
 export const router = express.Router();
 

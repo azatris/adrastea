@@ -1,5 +1,5 @@
 import "./boredapiservice";
-import constants from "../constants";
+import { constants } from "../constants";
 import { getLastUser } from "./userservice";
 import { getActivity } from "./boredapiservice";
 

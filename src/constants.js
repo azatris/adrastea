@@ -1,4 +1,4 @@
-module.exports = Object.freeze({
+export const constants = Object.freeze({
   PRICE: {
     Free: {
       name: "Free",
