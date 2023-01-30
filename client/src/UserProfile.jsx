@@ -12,18 +12,17 @@ export default function UserProfile() {
 
   const fireworks = useRef(null);
 
-  function loadNewActivity() {
-    fetch("/user/last")
-      .then((response) => response.json())
-      .then((json) => {
-        setIsLoading(false);
-        setData(json.user);
-      })
-      .catch((error) => console.log(error));
+  async function loadNewActivity() {
+    const response = await fetch("/user/last");
+    const json = await response.json();
+    setIsLoading(false);
+    setData(json.user);
+
   }
 
   useEffect(() => {
     fireworks.current.stop();
+    // noinspection JSIgnoredPromiseFromCall
     loadNewActivity();
   }, []);
 

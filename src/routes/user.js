@@ -4,23 +4,31 @@ import constants from "../constants";
 
 export const router = express.Router();
 
-router.get("/last", async (req, res) => {
-  const user = await getLastUser();
-  res.json({
-    success: true,
-    user,
-  });
+router.get("/last", async (req, res, next) => {
+  try {
+    const user = await getLastUser();
+    res.json({
+      success: true,
+      user,
+    });
+  } catch (e) {
+    next(e);
+  }
 });
 
-router.get("/", async (req, res) => {
-  const users = await getUsers();
-  res.json({
-    success: true,
-    users,
-  });
+router.get("/", async (req, res, next) => {
+  try {
+    const users = await getUsers();
+    res.json({
+      success: true,
+      users,
+    });
+  } catch (e) {
+    next(e);
+  }
 });
 
-router.post("/", async (req, res) => {
+router.post("/", async (req, res, next) => {
   const { name, accessibility, price } = req.body;
   // If unsupported accessibility or price type is used, return error
   const isAccessibilityValid = !accessibility || Object.keys(constants.ACCESSIBILITY).includes(accessibility);
@@ -39,9 +47,6 @@ router.post("/", async (req, res) => {
       user,
     });
   } catch (e) {
-    res.json({
-      success: false,
-      errors: [e],
-    });
+    next(e);
   }
 });

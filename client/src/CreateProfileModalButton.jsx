@@ -21,23 +21,26 @@ import PropTypes from "prop-types";
 function CreateProfileModalButton({ onProfileCreated }) {
   const [open, setOpen] = React.useState(false);
 
-  function createNewProfile(event) {
+  async function createNewProfile(event) {
     event.preventDefault();
     const data = new FormData(event.target);
 
-    fetch("/user", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        name: data.get("name"),
-        accessibility: data.get("accessibility"),
-        price: data.get("price"),
-      }),
-    })
-      .then(() => onProfileCreated())
-      .finally(() => setOpen(false));
+    const user = await fetch("/user", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            name: data.get("name"),
+            accessibility: data.get("accessibility"),
+            price: data.get("price"),
+        }),
+    });
+    if (user) {
+      onProfileCreated();
+    }
+
+    setOpen(false);
   }
 
   return (

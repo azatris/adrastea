@@ -1,15 +1,13 @@
 import express from "express";
-import * as activityService from "../services/activityservice";
+import { getTransformedActivity } from "../services/activityservice";
 
 export const router = express.Router();
 
-router.get("/", (req, res, next) => {
-  activityService
-    .getTransformedActivity()
-    .then((activity) => {
-      res.send(activity);
-    })
-    .catch((e) => {
-      next(e);
-    });
+router.get("/", async (req, res, next) => {
+    try {
+        const activity = await getTransformedActivity();
+        res.send(activity);
+    } catch (e) {
+        next(e);
+    }
 });
