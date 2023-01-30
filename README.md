@@ -59,10 +59,23 @@ npm run start
 
 ## Notes
 
+### Easter egg
 Look for the Easter egg.
+
+### Database
+Could use any other database by changing the datasource in prisma/schema.prisma, e.g. by changing the provider to postgresql. This db server in turn could be
+launched via a docker container.
+
 
 ## Future work
 
 ### Dependency injection
 Should there be more services in the future, dependency injection should be used.
+
+### Form validation
+On increased complexity of the app, form validation should be added via a library such as Formik and Yup.
+
+### Package management
+Could use a build system such as Lerna or NX.dev for monorepo support to manage the client and server side better.
+
 
