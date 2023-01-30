@@ -28,22 +28,23 @@ const ActivitySuggestion = () => {
    */
   const loadNewActivity = async () => {
     try {
-        const response = await fetch("/activity");
-        const json = await response.json();
+      const response = await fetch("/activity");
+      const json = await response.json();
 
-        if (!json) {
-            setError({error: "No activity found"});
-            return;
-        } else if (json.error) {
-            setError({error: json.error});
-            return;
-        }
+      if (!json) {
+        setError({ error: "No activity found" });
+        return;
+      }
+      if (json.error) {
+        setError({ error: json.error });
+        return;
+      }
 
-        setData(json);
+      setData(json);
     } catch (e) {
-        setError({ error: "Problems connecting to the server." });
+      setError({ error: "Problems connecting to the server." });
     } finally {
-        setIsLoading(false);
+      setIsLoading(false);
     }
   };
 
@@ -146,4 +147,4 @@ const ActivitySuggestion = () => {
     </>
   );
 };
-export default ActivitySuggestion
+export default ActivitySuggestion;

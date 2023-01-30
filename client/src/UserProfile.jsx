@@ -25,18 +25,19 @@ const UserProfile = () => {
       const json = await response.json();
 
       if (json.error) {
-        setError( {error: json.error});
+        setError({ error: json.error });
         return;
-      } else if (!json.user) {
-        setError({error: "No user found"});
+      }
+      if (!json.user) {
+        setError({ error: "No user found" });
         return;
       }
 
       setData(json.user);
     } catch (e) {
-      setError({error: "Problems connecting to the server."});
+      setError({ error: "Problems connecting to the server." });
     } finally {
-        setIsLoading(false);
+      setIsLoading(false);
     }
   };
 
@@ -126,4 +127,4 @@ const UserProfile = () => {
     </>
   );
 };
-export default UserProfile
+export default UserProfile;

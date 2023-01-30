@@ -14,7 +14,6 @@ import ActivitySuggestion from "./ActivitySuggestion";
 import UserProfile from "./UserProfile";
 
 const App = () => {
-
   /**
    * Reloads the page after a profile has been created
    */

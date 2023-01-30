@@ -1,0 +1,24 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "overrides": [
+    {
+      "files": ["*.js", "*.jsx"],
+      "rules": {
+        "import/no-import-module-exports": ["off"], // Not an actual problem for us
+        "no-console": ["off"],
+        "react/jsx-no-useless-fragment": [2, { "allowExpressions": true }]
+      }
+    }
+  ],
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "rules": {
+    "prettier/prettier": "error",
+    "react/function-component-definition": ["off"]
+  }
+}

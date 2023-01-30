@@ -47,6 +47,7 @@
     ]
   },
   "devDependencies": {
+    "eslint-plugin-prefer-arrow": "^1.2.3",
     "sass": "^1.57.1"
   }
 }

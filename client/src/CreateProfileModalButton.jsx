@@ -28,7 +28,7 @@ const CreateProfileModalButton = ({ onProfileCreated }) => {
   /**
    * Creates a new profile when the form is submitted
    */
-  const createNewProfile = async event => {
+  const createNewProfile = async (event) => {
     event.preventDefault();
     const data = new FormData(event.target);
 
