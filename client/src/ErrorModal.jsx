@@ -59,7 +59,15 @@ const ErrorModal = ({ error }) => {
 };
 
 ErrorModal.propTypes = {
-    error: PropTypes.object.isRequired,
+  arg: PropTypes.shape({
+    error: PropTypes.string,
+  }),
+};
+
+ErrorModal.defaultProps = {
+  arg: {
+    error: "",
+  },
 };
 
 export default ErrorModal;
