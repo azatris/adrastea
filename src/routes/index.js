@@ -1,6 +1,6 @@
 import express from "express";
 
-export const router = express.Router();
+const router = express.Router();
 
 /**
  * Generic response from server
@@ -8,3 +8,5 @@ export const router = express.Router();
 router.get("/", async (req, res) => {
   res.send("Hello from server");
 });
+
+export default router;

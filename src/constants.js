@@ -1,7 +1,7 @@
 /**
  * @fileoverview Constants for the application
  */
-export const constants = Object.freeze({
+const constants = Object.freeze({
   PRICE: {
     Free: {
       name: "Free",
@@ -37,3 +37,5 @@ export const constants = Object.freeze({
     },
   },
 });
+
+export default constants;

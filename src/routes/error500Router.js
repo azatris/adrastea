@@ -1,7 +1,9 @@
 import express from "express";
 
-export const router = express.Router();
+const router = express.Router();
 
 router.get("/", async (req, res) => {
   res.send("Error: 500");
 });
+
+export default router;

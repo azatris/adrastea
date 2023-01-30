@@ -1,8 +1,8 @@
 import express from "express";
 import { getLastUser, getUsers, createUser } from "../services/userservice";
-import { constants } from "../constants";
+import constants from "../constants";
 
-export const router = express.Router();
+const router = express.Router();
 
 /**
  * @returns {Promise<*>} The last user created
@@ -43,7 +43,9 @@ router.get("/", async (req, res, next) => {
 router.post("/", async (req, res, next) => {
   const { name, accessibility, price } = req.body;
   // If unsupported accessibility or price type is used, return error
-  const isAccessibilityValid = !accessibility || Object.keys(constants.ACCESSIBILITY).includes(accessibility);
+  const isAccessibilityValid =
+    !accessibility ||
+    Object.keys(constants.ACCESSIBILITY).includes(accessibility);
   const isPriceValid = !price || Object.keys(constants.PRICE).includes(price);
   if (!isAccessibilityValid || !isPriceValid) {
     res.json({
@@ -62,3 +64,5 @@ router.post("/", async (req, res, next) => {
     next(e);
   }
 });
+
+export default router;

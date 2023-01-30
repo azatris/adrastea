@@ -1,5 +1,5 @@
 import axios from "axios";
-import { constants } from "../constants";
+import constants from "../constants";
 import { InvalidAccessibilityError, InvalidPriceError } from "../errors";
 
 const BASE_URL = "http://www.boredapi.com/api";
@@ -19,8 +19,8 @@ const EPSILON = 0.00000000000000001; // The API has inclusive ranges, so we need
  * @param priceLevel - The price level of the activity (see constants.js)
  * @returns {Promise<AxiosResponse<any>> | *} The activity
  */
-export const getActivity = (accessibilityLevel, priceLevel) => {
-    if (!accessibilityLevel && !priceLevel) {
+const getActivity = (accessibilityLevel, priceLevel) => {
+  if (!accessibilityLevel && !priceLevel) {
     return axios({
       method: "GET",
       url: ACTIVITY_URL,
@@ -49,7 +49,7 @@ export const getActivity = (accessibilityLevel, priceLevel) => {
     } else if (accessibilityLevel) {
       // We have an accessibility level, but it's not one of the supported ones
       throw new InvalidAccessibilityError(
-          `Unsupported accessibility level: ${accessibilityLevel}`
+        `Unsupported accessibility level: ${accessibilityLevel}`
       );
     }
     url += `${KEY_MIN_ACCESSIBILITY}=${minaccessibility}&${KEY_MAX_ACCESSIBILITY}=${maxaccessibility}`;
@@ -91,4 +91,6 @@ export const getActivity = (accessibilityLevel, priceLevel) => {
     method: "GET",
     url,
   });
-}
+};
+
+export default getActivity;
