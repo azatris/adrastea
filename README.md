@@ -23,7 +23,7 @@ npm install
 Create local db with Prisma (already done by postinstall hook if you ran npm install)
 
 ``
-npx prisma generate
+npx prisma generate && npx prisma migrate dev --name init
 ``
 
 In order to see the db
