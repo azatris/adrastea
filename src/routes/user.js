@@ -1,11 +1,11 @@
 import express from "express";
-import userService from "../services/userservice";
+import { getLastUser, getUsers, createUser } from "../services/userservice";
 import constants from "../constants";
 
-const router = express.Router();
+export const router = express.Router();
 
 router.get("/last", async (req, res) => {
-  const user = await userService.getLastUser();
+  const user = await getLastUser();
   res.json({
     success: true,
     user,
@@ -13,7 +13,7 @@ router.get("/last", async (req, res) => {
 });
 
 router.get("/", async (req, res) => {
-  const users = await userService.getUsers();
+  const users = await getUsers();
   res.json({
     success: true,
     users,
@@ -33,7 +33,7 @@ router.post("/", async (req, res) => {
     return;
   }
   try {
-    const user = await userService.createUser(name, accessibility, price);
+    const user = await createUser(name, accessibility, price);
     res.json({
       success: true,
       user,
@@ -45,5 +45,3 @@ router.post("/", async (req, res) => {
     });
   }
 });
-
-module.exports = router;

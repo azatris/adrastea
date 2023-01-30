@@ -1,9 +1,9 @@
 import express from "express";
 import bodyParser from "body-parser";
-import indexRouter from "./routes/index";
-import activityRouter from "./routes/activity";
-import userRouter from "./routes/user";
-import error500Router from "./routes/error500Router";
+import { router as indexRouter } from "./routes/index.js";
+import { router as activityRouter } from "./routes/activity";
+import { router as userRouter } from "./routes/user";
+import { router as error500Router } from "./routes/error500Router";
 import { errorResponder, invalidPathHandler } from "./middleware";
 
 const app = express();

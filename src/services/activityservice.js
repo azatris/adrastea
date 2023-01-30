@@ -1,26 +1,27 @@
-import boredApiService from "./boredapiservice";
+import "./boredapiservice";
 import constants from "../constants";
-import userService from "./userservice";
+import { getLastUser } from "./userservice";
+import { getActivity } from "./boredapiservice";
 
-const getTransformedActivity = async () => {
+export const getTransformedActivity = async () => {
   // If a user is created, let's use the last one created to get their accessibility and price to query the API
-  const lastUser = await userService.getLastUser();
+  const lastUser = await getLastUser();
 
   let activityJson;
   if (lastUser) {
     const { accessibility: accessibilityLevel, price: priceLevel } = lastUser;
-    let activity = await boredApiService.getActivity(
+    let activity = await getActivity(
       accessibilityLevel,
       priceLevel
     );
     activityJson = activity.data;
     if (activityJson.error) {
       // If the API returns an error, let's just get a random activity
-      activity = await boredApiService.getActivity();
+      activity = await getActivity();
       activityJson = activity.data;
     }
   } else {
-    const activity = await boredApiService.getActivity();
+    const activity = await getActivity();
     activityJson = activity.data;
   }
   if (activityJson.error) {
@@ -48,8 +49,4 @@ const getTransformedActivity = async () => {
   }
 
   return activityJson;
-};
-
-module.exports = {
-  getTransformedActivity,
 };

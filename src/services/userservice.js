@@ -2,12 +2,12 @@ import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
-const getLastUser = async () =>
+export const getLastUser = async () =>
   prisma.user.findFirst({ orderBy: { id: "desc" } });
 
-const getUsers = async () => prisma.user.findMany();
+export const getUsers = async () => prisma.user.findMany();
 
-const createUser = async (name, accessibility, price) => {
+export const createUser = async (name, accessibility, price) => {
   try {
     return await prisma.user.create({
       data: {
@@ -22,10 +22,4 @@ const createUser = async (name, accessibility, price) => {
   } finally {
     await prisma.$disconnect();
   }
-};
-
-module.exports = {
-  getUsers,
-  createUser,
-  getLastUser,
 };

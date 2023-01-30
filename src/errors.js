@@ -1,4 +1,4 @@
-class InvalidActivityParameterError extends Error {
+export class InvalidActivityParameterError extends Error {
   constructor(s) {
     super(s);
     this.name = this.constructor.name;
@@ -14,11 +14,5 @@ class InvalidActivityParameterError extends Error {
   }
 }
 
-class InvalidAccessibilityError extends InvalidActivityParameterError {}
-class InvalidPriceError extends InvalidActivityParameterError {}
-
-module.exports = {
-  InvalidActivityParameterError,
-  InvalidAccessibilityError,
-  InvalidPriceError,
-};
+export class InvalidAccessibilityError extends InvalidActivityParameterError {}
+export class InvalidPriceError extends InvalidActivityParameterError {}

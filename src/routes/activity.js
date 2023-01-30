@@ -1,7 +1,7 @@
 import express from "express";
-import activityService from "../services/activityservice";
+import * as activityService from "../services/activityservice";
 
-const router = express.Router();
+export const router = express.Router();
 
 router.get("/", (req, res, next) => {
   activityService
@@ -13,5 +13,3 @@ router.get("/", (req, res, next) => {
       next(e);
     });
 });
-
-module.exports = router;
