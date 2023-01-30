@@ -13,9 +13,9 @@ const UserProfile = () => {
   const fireworks = useRef(null);
 
   /**
-   * Fetches a new activity from the server and updates the state
+   * Fetches a new user from the server and updates the state
    */
-  const loadNewActivity = async () => {
+  const loadNewUser = async () => {
     const response = await fetch("/user/last");
     const json = await response.json();
     setIsLoading(false);
@@ -26,7 +26,7 @@ const UserProfile = () => {
   useEffect(() => {
     fireworks.current.stop();
     // noinspection JSIgnoredPromiseFromCall
-    loadNewActivity();
+    loadNewUser();
   }, []);
 
   React.useEffect(() => {
