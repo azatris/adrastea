@@ -87,6 +87,9 @@ const getActivity = (accessibilityLevel, priceLevel) => {
   if (priceLevel) {
     addPriceLevelConstraintsToUrl();
   }
+
+  console.log("Activity request URL: " + url);
+
   return axios({
     method: "GET",
     url,

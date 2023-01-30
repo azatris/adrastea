@@ -59,6 +59,14 @@ npm run start
 
 ## Notes
 
+### Limitations
+If the BoredAPI does not return us a result with our wished parameters, we will query for a random activity instead.
+
+
+This situation could be eased by using fewer parameters for that query, but that would only work with a very few parameters (we'd have to retry for different combinations of these parameters),
+so it would not be a maintainable solution long-term if we want to add any parameters in the future. 
+
+
 ### Easter egg
 Look for the Easter egg.
 
