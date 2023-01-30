@@ -12,13 +12,13 @@ export default function UserProfile() {
 
   const fireworks = useRef(null);
 
-  async function loadNewActivity() {
+  const loadNewActivity = async () => {
     const response = await fetch("/user/last");
     const json = await response.json();
     setIsLoading(false);
     setData(json.user);
 
-  }
+  };
 
   useEffect(() => {
     fireworks.current.stop();

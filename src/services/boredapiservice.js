@@ -21,7 +21,7 @@ export const getActivity = (accessibilityLevel, priceLevel) => {
   let countParams = 0;
   let url = `${ACTIVITY_URL}?`;
 
-  function addAccessibilityConstraintsToUrl() {
+  const addAccessibilityConstraintsToUrl = () => {
     if (countParams > 0) {
       url += "&";
     }
@@ -45,13 +45,13 @@ export const getActivity = (accessibilityLevel, priceLevel) => {
     }
     url += `${KEY_MIN_ACCESSIBILITY}=${minaccessibility}&${KEY_MAX_ACCESSIBILITY}=${maxaccessibility}`;
     countParams += 1;
-  }
+  };
 
   if (accessibilityLevel) {
     addAccessibilityConstraintsToUrl();
   }
 
-  function addPriceLevelConstraintsToUrl() {
+  const addPriceLevelConstraintsToUrl = () => {
     if (countParams > 0) {
       url += "&";
     }
@@ -73,7 +73,7 @@ export const getActivity = (accessibilityLevel, priceLevel) => {
     }
     url += `${KEY_MIN_PRICE}=${minprice}&${KEY_MAX_PRICE}=${maxprice}`;
     countParams += 1;
-  }
+  };
 
   if (priceLevel) {
     addPriceLevelConstraintsToUrl();

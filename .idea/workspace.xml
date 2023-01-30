@@ -9,10 +9,6 @@
       <change beforePath="$PROJECT_DIR$/client/src/ActivitySuggestion.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/ActivitySuggestion.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/CreateProfileModalButton.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/CreateProfileModalButton.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/UserProfile.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/UserProfile.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/activity.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/activity.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/error500Router.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/error500Router.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/user.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,7 +84,7 @@
       <option name="presentableId" value="Default" />
       <updated>1675050701188</updated>
       <workItem from="1675050702266" duration="3883000" />
-      <workItem from="1675090501832" duration="2154000" />
+      <workItem from="1675090501832" duration="2428000" />
     </task>
     <servers />
   </component>

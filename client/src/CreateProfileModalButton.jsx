@@ -21,7 +21,7 @@ import PropTypes from "prop-types";
 function CreateProfileModalButton({ onProfileCreated }) {
   const [open, setOpen] = React.useState(false);
 
-  async function createNewProfile(event) {
+  const createNewProfile = async event => {
     event.preventDefault();
     const data = new FormData(event.target);
 
@@ -41,7 +41,7 @@ function CreateProfileModalButton({ onProfileCreated }) {
     }
 
     setOpen(false);
-  }
+  };
 
   return (
     <>

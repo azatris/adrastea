@@ -13,12 +13,12 @@ export default function ActivitySuggestion() {
   const [isLoading, setIsLoading] = React.useState(true);
   const [data, setData] = React.useState([]);
 
-  async function loadNewActivity() {
+  const loadNewActivity = async () => {
     const response = await fetch("/activity");
     const json = await response.json();
     setIsLoading(false);
     setData(json);
-  }
+  };
 
   React.useEffect(() => {
     // noinspection JSIgnoredPromiseFromCall
