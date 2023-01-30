@@ -13,7 +13,11 @@ import CreateProfileModalButton from "./CreateProfileModalButton";
 import ActivitySuggestion from "./ActivitySuggestion";
 import UserProfile from "./UserProfile";
 
-function App() {
+const App = () => {
+
+  /**
+   * Reloads the page after a profile has been created
+   */
   const onProfileCreated = () => {
     window.location.reload();
   };
@@ -51,6 +55,6 @@ function App() {
       </div>
     </CssVarsProvider>
   );
-}
+};
 
 export default App;

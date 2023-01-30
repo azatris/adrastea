@@ -2,7 +2,7 @@ import { useColorScheme } from "@mui/joy/styles";
 import Button from "@mui/joy/Button";
 import * as React from "react";
 
-function DarkToggle() {
+const DarkToggle = () => {
   const { mode, setMode } = useColorScheme();
   return (
     <Button
@@ -13,6 +13,6 @@ function DarkToggle() {
       {mode === "dark" ? "🌞" : "🌙"}
     </Button>
   );
-}
+};
 
 export default DarkToggle;

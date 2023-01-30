@@ -6,12 +6,15 @@ import Typography from "@mui/joy/Typography";
 import { Fireworks } from "@fireworks-js/react";
 import { useEffect, useRef } from "react";
 
-export default function UserProfile() {
+const UserProfile = () => {
   const [isLoading, setIsLoading] = React.useState(true);
   const [data, setData] = React.useState([]);
 
   const fireworks = useRef(null);
 
+  /**
+   * Fetches a new activity from the server and updates the state
+   */
   const loadNewActivity = async () => {
     const response = await fetch("/user/last");
     const json = await response.json();
@@ -32,6 +35,9 @@ export default function UserProfile() {
     }
   }, [data]);
 
+  /**
+   * Launches fireworks when the profile is clicked, just for fun
+   */
   const onProfileClick = () => {
     fireworks.current.launch(25);
   };
@@ -101,4 +107,5 @@ export default function UserProfile() {
       )}
     </>
   );
-}
+};
+export default UserProfile

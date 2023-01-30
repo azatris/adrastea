@@ -9,10 +9,13 @@ import { Divider, Stack } from "@mui/joy";
 import CategoryIcon from "@mui/icons-material/Category";
 import OpenInNew from "@mui/icons-material/OpenInNew";
 
-export default function ActivitySuggestion() {
+const ActivitySuggestion = () => {
   const [isLoading, setIsLoading] = React.useState(true);
   const [data, setData] = React.useState([]);
 
+  /**
+   * Fetches a new activity from the server and updates the state
+   */
   const loadNewActivity = async () => {
     const response = await fetch("/activity");
     const json = await response.json();
@@ -117,4 +120,5 @@ export default function ActivitySuggestion() {
       )}
     </>
   );
-}
+};
+export default ActivitySuggestion

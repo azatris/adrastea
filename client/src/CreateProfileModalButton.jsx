@@ -18,9 +18,12 @@ import AccessibilityIcon from "@mui/icons-material/Accessibility";
 import MoneyOffIcon from "@mui/icons-material/MoneyOff";
 import PropTypes from "prop-types";
 
-function CreateProfileModalButton({ onProfileCreated }) {
+const CreateProfileModalButton = ({ onProfileCreated }) => {
   const [open, setOpen] = React.useState(false);
 
+  /**
+   * Creates a new profile when the form is submitted
+   */
   const createNewProfile = async event => {
     event.preventDefault();
     const data = new FormData(event.target);
@@ -145,7 +148,7 @@ function CreateProfileModalButton({ onProfileCreated }) {
       </Modal>
     </>
   );
-}
+};
 
 CreateProfileModalButton.propTypes = {
   onProfileCreated: PropTypes.func.isRequired,
