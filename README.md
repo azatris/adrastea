@@ -3,9 +3,6 @@
 <img src="https://i.imgur.com/I8L3hB3.png" alt="Visualization of Generate Activity App">
 
 
-
-
-
 This project is created for the purpose of solving a take-home assignment for a job application.
 
 Because this project has heavy reliance on BoredAPI, it should not be attempted to be run without an internet connection.
@@ -23,7 +20,7 @@ npm install
 
 
 ### Database
-Create local db with Prisma
+Create local db with Prisma (already done by postinstall hook if you ran npm install)
 
 ``
 npx prisma generate
@@ -49,6 +46,10 @@ In another tab, start the client
 
 ``
 cd client
+``
+
+``
+npm install
 ``
 
 ``
