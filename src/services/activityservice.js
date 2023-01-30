@@ -3,6 +3,13 @@ import { constants } from "../constants";
 import { getLastUser } from "./userservice";
 import { getActivity } from "./boredapiservice";
 
+/**
+ * Get a random activity from the Bored API and transform the accessibility and price to human-readable values
+ * If a user is created, use the last one created to get their accessibility and price to query the API
+ * If the API returns an error, let's just get a random activity
+ *
+ * @returns {Promise<*|{error}>} The transformed activity
+ */
 export const getTransformedActivity = async () => {
   // If a user is created, let's use the last one created to get their accessibility and price to query the API
   const lastUser = await getLastUser();

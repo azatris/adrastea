@@ -10,6 +10,15 @@ const KEY_MIN_PRICE = "minprice";
 const KEY_MAX_PRICE = "maxprice";
 const EPSILON = 0.00000000000000001; // The API has inclusive ranges, so we need to add a small number to the min params
 
+/**
+ * Get an activity from the Bored API
+ * If accessibilityLevel and priceLevel are provided, the API will return an activity that matches the constraints
+ * If accessibilityLevel and priceLevel are not provided, the API will return a random activity
+ *
+ * @param accessibilityLevel - The accessibility level of the activity (see constants.js)
+ * @param priceLevel - The price level of the activity (see constants.js)
+ * @returns {Promise<AxiosResponse<any>> | *} The activity
+ */
 export const getActivity = (accessibilityLevel, priceLevel) => {
     if (!accessibilityLevel && !priceLevel) {
     return axios({

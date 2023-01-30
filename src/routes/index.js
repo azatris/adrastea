@@ -2,6 +2,9 @@ import express from "express";
 
 export const router = express.Router();
 
+/**
+ * Generic response from server
+ */
 router.get("/", async (req, res) => {
-  res.send("TODO: Level 3");
+  res.send("Hello from server");
 });

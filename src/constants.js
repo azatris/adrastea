@@ -1,3 +1,6 @@
+/**
+ * @fileoverview Constants for the application
+ */
 export const constants = Object.freeze({
   PRICE: {
     Free: {

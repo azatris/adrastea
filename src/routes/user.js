@@ -4,6 +4,9 @@ import { constants } from "../constants";
 
 export const router = express.Router();
 
+/**
+ * @returns {Promise<*>} The last user created
+ */
 router.get("/last", async (req, res, next) => {
   try {
     const user = await getLastUser();
@@ -16,6 +19,9 @@ router.get("/last", async (req, res, next) => {
   }
 });
 
+/**
+ * @returns {Promise<*>} All users
+ */
 router.get("/", async (req, res, next) => {
   try {
     const users = await getUsers();
@@ -28,6 +34,12 @@ router.get("/", async (req, res, next) => {
   }
 });
 
+/**
+ * @param name - The name of the user
+ * @param accessibility - The accessibility of the user (Low, Medium, High)
+ * @param price - The price of the user (Free, Low, High)
+ * @returns {Promise<*>} The created user
+ */
 router.post("/", async (req, res, next) => {
   const { name, accessibility, price } = req.body;
   // If unsupported accessibility or price type is used, return error

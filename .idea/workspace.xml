@@ -6,10 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="af350072-3f86-4cb2-8c9d-b71d572088a4" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/constants.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/activity.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/activity.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/routes/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/user.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/services/activityservice.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/activityservice.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/services/boredapiservice.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/boredapiservice.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/userservice.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/userservice.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,7 +89,7 @@
       <option name="presentableId" value="Default" />
       <updated>1675050701188</updated>
       <workItem from="1675050702266" duration="3883000" />
-      <workItem from="1675090501832" duration="2654000" />
+      <workItem from="1675090501832" duration="5778000" />
     </task>
     <servers />
   </component>
