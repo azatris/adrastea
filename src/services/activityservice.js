@@ -32,7 +32,7 @@ const getTransformedActivity = async () => {
   const { ACCESSIBILITY, PRICE } = constants;
   if (activityJson.accessibility <= ACCESSIBILITY.High.max) {
     activityJson.accessibility = ACCESSIBILITY.High.name;
-  } else if (activityJson <= ACCESSIBILITY.Medium.max) {
+  } else if (activityJson.accessibility <= ACCESSIBILITY.Medium.max) {
     activityJson.accessibility = ACCESSIBILITY.Medium.name;
   } else {
     activityJson.accessibility = ACCESSIBILITY.Low.name;
