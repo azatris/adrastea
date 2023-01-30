@@ -60,3 +60,9 @@ npm run start
 ## Notes
 
 Look for the Easter egg.
+
+## Future work
+
+### Dependency injection
+Should there be more services in the future, dependency injection should be used.
+
