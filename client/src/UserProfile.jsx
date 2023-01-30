@@ -5,10 +5,14 @@ import Chip from "@mui/joy/Chip";
 import Typography from "@mui/joy/Typography";
 import { Fireworks } from "@fireworks-js/react";
 import { useEffect, useRef } from "react";
+import ErrorModal from "./ErrorModal";
 
 const UserProfile = () => {
   const [isLoading, setIsLoading] = React.useState(true);
-  const [data, setData] = React.useState([]);
+  const [data, setData] = React.useState({});
+  const [error, setError] = React.useState({
+    error: "",
+  });
 
   const fireworks = useRef(null);
 
@@ -16,11 +20,24 @@ const UserProfile = () => {
    * Fetches a new user from the server and updates the state
    */
   const loadNewUser = async () => {
-    const response = await fetch("/user/last");
-    const json = await response.json();
-    setIsLoading(false);
-    setData(json.user);
+    try {
+      const response = await fetch("/user/last");
+      const json = await response.json();
 
+      if (json.error) {
+        setError( {error: json.error});
+        return;
+      } else if (!json.user) {
+        setError({error: "No user found"});
+        return;
+      }
+
+      setData(json.user);
+    } catch (e) {
+      setError({error: "Problems connecting to the server."});
+    } finally {
+        setIsLoading(false);
+    }
   };
 
   useEffect(() => {
@@ -44,6 +61,7 @@ const UserProfile = () => {
 
   return (
     <>
+      <ErrorModal error={error} />
       <Fireworks
         ref={fireworks}
         options={{
@@ -61,7 +79,7 @@ const UserProfile = () => {
           zIndex: -1,
         }}
       />
-      {!isLoading && data && (
+      {!isLoading && Object.keys(data).length !== 0 && (
         <Card
           variant="outlined"
           row

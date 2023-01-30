@@ -17,9 +17,13 @@ import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import AccessibilityIcon from "@mui/icons-material/Accessibility";
 import MoneyOffIcon from "@mui/icons-material/MoneyOff";
 import PropTypes from "prop-types";
+import ErrorModal from "./ErrorModal";
 
 const CreateProfileModalButton = ({ onProfileCreated }) => {
   const [open, setOpen] = React.useState(false);
+  const [error, setError] = React.useState({
+    error: "",
+  });
 
   /**
    * Creates a new profile when the form is submitted
@@ -28,26 +32,37 @@ const CreateProfileModalButton = ({ onProfileCreated }) => {
     event.preventDefault();
     const data = new FormData(event.target);
 
-    const user = await fetch("/user", {
+    try {
+      const user = await fetch("/user", {
         method: "POST",
         headers: {
-            "Content-Type": "application/json",
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
-            name: data.get("name"),
-            accessibility: data.get("accessibility"),
-            price: data.get("price"),
+          name: data.get("name"),
+          accessibility: data.get("accessibility"),
+          price: data.get("price"),
         }),
-    });
-    if (user) {
-      onProfileCreated();
+      });
+      if (user) {
+        if (user.error) {
+          setError({ error: user.error });
+        } else {
+          onProfileCreated();
+        }
+      } else {
+        setError({ error: "Creating user failed 😨" });
+      }
+    } catch (e) {
+      setError({ error: "Problems connecting to the server." });
+    } finally {
+      setOpen(false);
     }
-
-    setOpen(false);
   };
 
   return (
     <>
+      <ErrorModal error={error} />
       <Button
         variant="outlined"
         color="neutral"

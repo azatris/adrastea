@@ -8,19 +8,43 @@ import RefreshIcon from "@mui/icons-material/Refresh";
 import { Divider, Stack } from "@mui/joy";
 import CategoryIcon from "@mui/icons-material/Category";
 import OpenInNew from "@mui/icons-material/OpenInNew";
+import ErrorModal from "./ErrorModal";
 
 const ActivitySuggestion = () => {
   const [isLoading, setIsLoading] = React.useState(true);
-  const [data, setData] = React.useState([]);
+  const [data, setData] = React.useState({
+    activity: "...",
+    accessibility: "...",
+    type: "...",
+    participants: "...",
+    price: "...",
+  });
+  const [error, setError] = React.useState({
+    error: "",
+  });
 
   /**
    * Fetches a new activity from the server and updates the state
    */
   const loadNewActivity = async () => {
-    const response = await fetch("/activity");
-    const json = await response.json();
-    setIsLoading(false);
-    setData(json);
+    try {
+        const response = await fetch("/activity");
+        const json = await response.json();
+
+        if (!json) {
+            setError({error: "No activity found"});
+            return;
+        } else if (json.error) {
+            setError({error: json.error});
+            return;
+        }
+
+        setData(json);
+    } catch (e) {
+        setError({ error: "Problems connecting to the server." });
+    } finally {
+        setIsLoading(false);
+    }
   };
 
   React.useEffect(() => {
@@ -37,6 +61,7 @@ const ActivitySuggestion = () => {
   return (
     // noinspection react/jsx-no-useless-fragment
     <>
+      <ErrorModal error={error} />
       {!isLoading && (
         <Card variant="outlined" sx={{ width: 640 }}>
           <Stack
